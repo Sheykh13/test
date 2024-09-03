@@ -1,0 +1,29 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{%block content%}
+     <!-- Header-->
+     <header class="bg-dark py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+                <h1 class="display-4 fw-bolder">enter</h1>
+                <p class="lead fw-normal text-white-50 mb-0">login</p>
+            </div>
+        </div>
+    </header>
+<form class="form-group"  method="POST",action= ""  >
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">username</label>
+    <input type="text" class="form-control"name="username",placeholder="enter username">
+    
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="enter password">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+  
+  <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{%endblock%}
