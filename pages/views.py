@@ -11,7 +11,7 @@ from django.views.generic import CreateView
 from django.urls import path
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import signup_form,updateuser_form
+from .forms import signup_form,updateuser_form,updatepasswordform
 from django.contrib.auth import views as django_auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -109,3 +109,19 @@ def update_use_page(request):
            messages.success(request,'you shold kbe log in')
            return redirect('pages:home')
 
+def update_pass_page(request):
+     return render(request,"pages/update_pass.html")
+def ch_pass_page(request):
+    if request.user.is_authenticated:
+        current_user=request.user
+        if request.method=="POST":
+            pass
+        else:
+            form=updatepasswordform(current_user)
+            context={'form':form}
+
+            return render(request,"pages/ch_pass.html",context) 
+    else:
+        messages.success(request,"you sould be log in")
+        return redirect("pages:login")    
+    return render(request,"pages/ch_pass.html",{})

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm,SetPasswordForm
 class updateuser_form(UserChangeForm):
     class Meta:
         model = User
@@ -31,6 +31,9 @@ class signup_form(UserCreationForm):
 
         
 #nn
-
+class updatepasswordform(SetPasswordForm):
+    class meta:
+        model=User
+        fields=['new_password1','new_password2']
 
 

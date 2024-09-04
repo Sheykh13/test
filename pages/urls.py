@@ -8,6 +8,8 @@ path('login/',views.login_page,name='login'),
 path('logout/',views.logout_page,name='logout'),
 path("signup/", views.signup_page, name='signup'),
 path("update_user/", views.update_use_page, name='update_user'),
+path("ch_pass/", views.ch_pass_page, name='ch_pass'),
+
 
 path('catgory/<str:cat>',views.catgory_page,name='catgory'),
 path("cart1/",views.cart_page,name="cart1"),

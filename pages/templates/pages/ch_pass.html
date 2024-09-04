@@ -5,18 +5,15 @@
      <header class="bg-dark py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-                <h1 class="display-4 fw-bolder">edit profile</h1>
-                <p class="lead fw-normal text-white-50 mb-0">new informations</p>
+                <h1 class="display-4 fw-bolder">edit password</h1>
+                <p class="lead fw-normal text-white-50 mb-0">edit your informatios</p>
             </div>
         </div>
     </header>
-    <form action="{% url "pages:update_user" %}"method='POST'>
-      {{user_form}}
+    <form action=""method='POST'>
+      {{form}}
       {% csrf_token %}
 
   <button type="submit" class="btn btn-secondary">edit</button>
     </form>
-    <br>
-    <a href="{% url "pages:ch_pass" %}"class="btn btn-warning">edit password</a>
-
 {%endblock%}
