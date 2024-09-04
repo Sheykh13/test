@@ -93,3 +93,5 @@ def merch_page(request,pk):
     product=merch.objects.get(id=pk)
      
     return render(request,"pages/merch.html",{'merch':product})
+def update_use_page(request):
+    return render(request,'pages/update_user.html',{})
