@@ -18,6 +18,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
 class signup_form(UserCreationForm):
+  
     class Meta:
         model = User
         fields = ['first_name', 'last_name','email','username',  'password1', 'password2']
@@ -32,6 +33,10 @@ class signup_form(UserCreationForm):
         
 #nn
 class updatepasswordform(SetPasswordForm):
+ 
+
+
+
     class meta:
         model=User
         fields=['new_password1','new_password2']

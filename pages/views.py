@@ -115,7 +115,18 @@ def ch_pass_page(request):
     if request.user.is_authenticated:
         current_user=request.user
         if request.method=="POST":
-            pass
+            form=updatepasswordform(current_user,request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request,"password editing")
+                login(request,current_user)
+                return redirect("pages:update_user")  
+            else:
+                    messages.success(request,"password inavalabe")
+                    return redirect("pages:update_pass")  
+
+
+
         else:
             form=updatepasswordform(current_user)
             context={'form':form}
