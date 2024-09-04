@@ -11,7 +11,7 @@ from django.views.generic import CreateView
 from django.urls import path
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import signup_form
+from .forms import signup_form,updateuser_form
 from django.contrib.auth import views as django_auth_views
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -94,4 +94,18 @@ def merch_page(request,pk):
      
     return render(request,"pages/merch.html",{'merch':product})
 def update_use_page(request):
-    return render(request,'pages/update_user.html',{})
+    if request.user.is_authenticated:
+        current_user= User .objects.get(id=request.user.id)
+        user_form=updateuser_form(request.POST or None,instance=current_user)
+        if user_form .is_valid():
+            user_form.save()
+            login(request,current_user)
+            messages.success(request,'your profile is updated')
+            return redirect('pages:home')
+        
+        context=  {"user_form":user_form} 
+        return render(request,'pages/update_user.html',context)
+    else:
+           messages.success(request,'you shold kbe log in')
+           return redirect('pages:home')
+

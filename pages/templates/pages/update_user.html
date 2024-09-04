@@ -11,7 +11,7 @@
         </div>
     </header>
     <form action="{% url "pages:update_user" %}"method='POST'>
-      {{form}}
+      {{user_form}}
       {% csrf_token %}
 
   <button type="submit" class="btn btn-secondary">edit</button>
